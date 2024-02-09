@@ -24,6 +24,7 @@ export default function Home() {
   const [nerBut, setNerBut] = useState(false);
   const [yesFontSize, setYesFontSize] = useState(20);
   const [noClickCount, setNoClickCount] = useState(0);
+  const [noClickCount2, setNoClickCount2] = useState(0);
   const [iseYesClicked, setIsYesClicked] = useState(false);
   const [gifUrl, setGifUrl] = useState(
     'https://media0.giphy.com/media/KZAMZlHBmqZ6Zu0HBO/200w.webp'
@@ -37,7 +38,7 @@ export default function Home() {
         {
           user_name: 'user_name',
           to_name: name,
-          from_name: 'from_name',
+          clicked_count: noClickCount2,
           user_email: 'azure.gankhulug@gmail.com',
           message: 'darchihje',
         },
@@ -56,6 +57,7 @@ export default function Home() {
   };
   const noFun = () => {
     setYesFontSize((prev) => (prev += 20));
+    setNoClickCount2((prev) => (prev += 1));
     if (noClickCount < sentences.length - 1) {
       setNoClickCount((prev) => (prev += 1));
     } else {
@@ -82,7 +84,7 @@ export default function Home() {
             />
           </div>
           {iseYesClicked === false ? (
-            <p className="text-2xl">Will you be my Valentine?</p>
+            <p className="text-2xl">{name} Will you be my Valentine?</p>
           ) : (
             <p className="text-2xl">You are mine now</p>
           )}
