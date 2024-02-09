@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const sentences = [
   'No',
@@ -26,6 +27,31 @@ export default function Home() {
     'https://media0.giphy.com/media/KZAMZlHBmqZ6Zu0HBO/200w.webp'
   );
 
+  const sendEmail = () => {
+    emailjs
+      .send(
+        'service_4whw1cf',
+        'template_qq20nkt',
+        {
+          user_name: 'user_name',
+          to_name: 'to_name',
+          from_name: 'from_name',
+          user_email: 'azure.gankhulug@gmail.com',
+          message: 'darchihje',
+        },
+        {
+          publicKey: 'pc3zGbgC1CQaez_eN',
+        }
+      )
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        }
+      );
+  };
   const noFun = () => {
     setYesFontSize((prev) => (prev += 20));
     if (noClickCount < sentences.length - 1) {
@@ -35,6 +61,7 @@ export default function Home() {
     }
   };
   const yesFun = () => {
+    sendEmail();
     setGifUrl('https://media4.giphy.com/media/QTCSUv7EL1rXyBx8Mc/200w.webp');
     setIsYesClicked(true);
   };
