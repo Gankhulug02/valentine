@@ -1,8 +1,11 @@
 import { Inter } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Head from "next/head";
 
-const inter = new Inter({ subsets: ["latin"] });
+
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Valentine",
@@ -12,29 +15,29 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
+       <Head>
         {/* Other head elements */}
         {typeof document !== 'undefined' && (
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                (function(h,o,t,j,a,r){
-                    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                    h._hjSettings={hjid:3884300,hjsv:6};
-                    a=o.getElementsByTagName('head')[0];
-                    r=o.createElement('script');r.async=1;
-                    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                    a.appendChild(r);
-                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+              (function(h,o,t,j,a,r){
+                  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                  h._hjSettings={hjid:3884300,hjsv:6};
+                  a=o.getElementsByTagName('head')[0];
+                  r=o.createElement('script');r.async=1;
+                  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                  a.appendChild(r);
+              })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
               `,
             }}
           />
         )}
       </Head>
       <body className={inter.className}>
-        <SpeedInsights />
+        <SpeedInsights/>
         {children}
-      </body>
+        </body>
     </html>
   );
 }
