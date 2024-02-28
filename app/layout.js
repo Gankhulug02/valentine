@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Head from "next/head";
 
 
 
@@ -14,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-       <head>
+       <Head>
         {/* Other head elements */}
         {typeof document !== 'undefined' && (
           <script
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
             }}
           />
         )}
-      </head>
+      </Head>
       <body className={inter.className}>
         <SpeedInsights/>
         {children}
